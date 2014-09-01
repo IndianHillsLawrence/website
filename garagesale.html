@@ -14,11 +14,17 @@
 
   <script type="text/javascript" src="javascripts/jquery.min-1.71.js"></script>
   <script type="text/javascript" src="javascripts/script.js"></script>
-<!--
-  <script type="text/javascript" src="javascripts/leaflet.js"></script>
--->
-  <script type="text/javascript" src="javascripts/leaflet-src.js"></script>
 
+
+<!-- <script -->
+<!--         src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"> -->
+<!--     </script> -->
+
+ <script type="text/javascript" src="javascripts/leaflet.js"></script> 
+  <!-- <script type="text/javascript" src="javascripts/leaflet-src.js"></script> -->
+  <script type="text/javascript">
+    L.Icon.Default.imagePath='images/leaflet/';
+  </script>
 
   <title>Neighborhood Garage Sale Sat Sept. 6</title>
   <meta name="description" content="Indian Hills Neighborhood Garage Sale, Sat
@@ -39,53 +45,70 @@
 
       <div id="map"></div>
 
-    <table id='locations'>
-    <tr><td class=location lat='38.93745' lon='-95.24572'>2527 Belle Crest Drive</td></tr>
-    <tr><td class=location lat='38.93709' lon='-95.24572'>2601 Belle Crest Drive</td></td>
-    </table>
-
-    <script type="text/javascript">
-
-    var map = L.map('map').setView([38.9355,-95.2409], 13);
-var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
-var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 20, attribution: osmAttrib});		
-map.addLayer(osm);
-
-$('#locations tr td').each(function() {
-    var lat = $(this).attr('lat') 
-    var lon = $(this).attr('lon') 
-    L.marker([$lat, $lon]).addTo(map)
-     	.bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
-});
-var popup = L.popup();
-
-function onMapClick(e) {
-    popup
-	.setLatLng(e.latlng)
-	.setContent("You clicked the map at " + e.latlng.toString())
-	.openOn(map);
-}
-
-		map.on('click', onMapClick);
-  </script>
-
       <p>We are hosting a Neighborhood Garage Sale on Sat Sept. 6th in Indian
       Hills.
-      <p>Will be creating a webpage
-      with the listings and advertising on craigslist and other places. 
-      When the event is ready you will find more information here.
-    <p>Join the <a href=https://www.facebook.com/events/294284144091558/>Facebook Event</a></p>    
+      <p>You will find the craigslist advert here
+
+    <table style="padding:12px; table-border=1px width:100%" border=1
+           id='locations'>
+    <tr style="background-color: gray; v-align:center
+    font-size:large"><th style="padding:2px; width:40%" >Address</th><th style="padding:2px">Items</th></tr>
+
+    <tr><td class=location lat='38.93745' lon='-95.24572'>2527 Belle Crest
+    Dr.</td><td>Infant Clothes. Baby Cradle. Baby
+    Stuff. Dishes. Clothing. Washmachine. Books. </td></tr>
+    <tr><td class=location lat='38.93709' lon='-95.24572'>2601 Belle Crest
+    Dr.</td><td>Household Items.</td></tr>
+    <tr><td class=location lat='38.93253' lon='-95.24988'>1207 west 29th Court</td><td>Furniture, home décor, linens, bedspreads, shoes, purses, etc.</td></tr>
+    <tr><td class=location lat='38.93213' lon='-95.2463'>916 W 29th St.</td><td>household good and jewlery making supplies</td></tr>
+    <tr><td class=location lat='38.93217' lon='-95.2465'>920 W 29th St.</td><td>Rare Pens and collectables</td></tr>
+    <tr><td class=location lat='38.93609' lon='-95.24949'>2623 Missouri St.</td><td>toys, furniture, books, kids' clothing, kid's bike, house parts, miscellaneous household items</td></tr>
+    <tr><td class=location lat='38.93735' lon='-95.24349'>2538 Belle Haven Dr.</td><td>Baby boy clothes, baby swing, household items, ash trays, neon beer lights (Budweiser & Coors), beer memorabilia, NASCAR Items to include Dale Sr, Salad Master Knife set w/wooden holder, variety of books (western, Louis Lamour, cookbooks), Christmas decorations, salt & pepper sets, China dolls, </td></tr>
+    </table>
+
+
+<script type="text/javascript"> 
+
+  var map = L.map('map').setView([38.937,-95.245], 15);
+  var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+  var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 20, attribution: osmAttrib});
+  map.addLayer(osm);
+
+  $('table tr').each(function() {
+
+latlon= $(this).children().first()
+
+
+  if (latlon.attr('class') == 'location') {
+//  alert(latlon.html())  
+  addr = latlon.html()
+  var lat = latlon.attr('lat') 
+  var lon = latlon.attr('lon') 
+  var items = $(this).children().last().html() 
+  marker =  L.marker([lat, lon ]).addTo(map);
+  marker.bindPopup("<b>"+addr+"</b><p>"+items+"</p>").openPopup();
+  }
+
+  });
+                        
+    </script>
+
+      <p>Join the <a href=https://www.facebook.com/events/294284144091558/>Facebook Event</a></p>    
+<p>Find the <a href=http://lawrence.craigslist.org/gms/4646452264.html>Craigslist Advertising Here</a></p>
+
     </div>
+
+
 
     <div id="container">
       <p class="tagline">Sign up here to be included as a seller on the website listing</p>
       
-      <div id="main" role="main">
-<iframe src="https://docs.google.com/forms/d/1IUPqalVKlUquZu2U3epFTXrBbMhOWnD0OqrntQXpnsQ/viewform?embedded=true"
-        width="600" height="500" frameborder="0" marginheight="0"
-        marginwidth="0">Loading...</iframe>
-      </div>
+      <div id="main" role="main"> --
+<iframe src="https://docs.google.com/forms/d/1IUPqalVKlUquZu2U3epFTXrBbMhOWnD0OqrntQXpnsQ/viewform?embedded=true" --
+        width="600" height="500" frameborder="0" marginheight="0" --
+        marginwidth="0">Loading...</iframe> --
+      </div> --
 
       <p class="tagline">join the Mailing List (ListServ) for general updates: <a href="https://groups.google.com/forum/#!forum/indian-hills-neighborhood-association">https://groups.google.com/forum/#!forum/indian-hills-neighborhood-association</a>
 
