@@ -2,11 +2,24 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen"/>
   <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="stylesheets/leaflet.css" />
+
+<style>
+  #map { height: 380px; }
+</style>
+
+  <script type="text/javascript" src="javascripts/jquery.min-1.71.js"></script>
   <script type="text/javascript" src="javascripts/script.js"></script>
+<!--
+  <script type="text/javascript" src="javascripts/leaflet.js"></script>
+-->
+  <script type="text/javascript" src="javascripts/leaflet-src.js"></script>
+
+
   <title>Neighborhood Garage Sale Sat Sept. 6</title>
   <meta name="description" content="Indian Hills Neighborhood Garage Sale, Sat
                                     Sept 6">
@@ -23,6 +36,39 @@
     <h3>Sat. Sept 6th</h3>
 
     <div id="main" role="main">
+
+      <div id="map"></div>
+
+    <table id='locations'>
+    <tr><td class=location lat='38.93745' lon='-95.24572'>2527 Belle Crest Drive</td></tr>
+    <tr><td class=location lat='38.93709' lon='-95.24572'>2601 Belle Crest Drive</td></td>
+    </table>
+
+    <script type="text/javascript">
+
+    var map = L.map('map').setView([38.9355,-95.2409], 13);
+var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 20, attribution: osmAttrib});		
+map.addLayer(osm);
+
+$('#locations tr td').each(function() {
+    var lat = $(this).attr('lat') 
+    var lon = $(this).attr('lon') 
+    L.marker([$lat, $lon]).addTo(map)
+     	.bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
+});
+var popup = L.popup();
+
+function onMapClick(e) {
+    popup
+	.setLatLng(e.latlng)
+	.setContent("You clicked the map at " + e.latlng.toString())
+	.openOn(map);
+}
+
+		map.on('click', onMapClick);
+  </script>
 
       <p>We are hosting a Neighborhood Garage Sale on Sat Sept. 6th in Indian
       Hills.
