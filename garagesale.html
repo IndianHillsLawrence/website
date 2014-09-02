@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="stylesheets/leaflet.css" />
 
 <style>
-  #map { height: 380px; }
+  #map { height: 430px; }
 </style>
 
   <script type="text/javascript" src="javascripts/jquery.min-1.71.js"></script>
@@ -56,19 +56,47 @@
     <tr><td class=location lat='38.93745' lon='-95.24572'>2527 Belle Crest
     Dr.</td><td>Infant Clothes. Baby Cradle. Baby
     Stuff. Dishes. Clothing. Washmachine. Books. </td></tr>
+
     <tr><td class=location lat='38.93709' lon='-95.24572'>2601 Belle Crest
-    Dr.</td><td>Household Items.</td></tr>
-    <tr><td class=location lat='38.93253' lon='-95.24988'>1207 west 29th Court</td><td>Furniture, home décor, linens, bedspreads, shoes, purses, etc.</td></tr>
-    <tr><td class=location lat='38.93213' lon='-95.2463'>916 W 29th St.</td><td>household good and jewlery making supplies</td></tr>
-    <tr><td class=location lat='38.93217' lon='-95.2465'>920 W 29th St.</td><td>Rare Pens and collectables</td></tr>
-    <tr><td class=location lat='38.93609' lon='-95.24949'>2623 Missouri St.</td><td>toys, furniture, books, kids' clothing, kid's bike, house parts, miscellaneous household items</td></tr>
-    <tr><td class=location lat='38.93735' lon='-95.24349'>2538 Belle Haven Dr.</td><td>Baby boy clothes, baby swing, household items, ash trays, neon beer lights (Budweiser & Coors), beer memorabilia, NASCAR Items to include Dale Sr, Salad Master Knife set w/wooden holder, variety of books (western, Louis Lamour, cookbooks), Christmas decorations, salt & pepper sets, China dolls, </td></tr>
+    Dr.</td><td>Comic books, books, glassware, kitchen items, board
+    games.</td></tr>
+
+    <tr><td class=location lat='38.93253' lon='-95.24988'>1207 west 29th
+    Court</td><td>Furniture, home décor, linens, bedspreads, shoes, purses,
+    etc.</td></tr>
+
+    <tr><td class=location lat='38.93213' lon='-95.2463'>916 W 29th
+    St.</td><td>household good and jewlery making supplies</td></tr>
+
+    <tr><td class=location lat='38.93217' lon='-95.2465'>920 W 29th
+    St.</td><td>Rare Pens and collectables</td></tr>
+
+    <tr><td class=location lat='38.93609' lon='-95.24949'>2623 Missouri
+    St.</td><td>Toys, furniture, books, kids' clothing, kid's bike, house
+    parts, miscellaneous household items</td></tr>
+
+    <tr><td class=location lat='38.93735' lon='-95.24349'>2538 Belle Haven
+    Dr.</td><td>Baby boy clothes, baby swing, household items, ash trays, neon
+    beer lights (Budweiser & Coors), beer memorabilia, NASCAR Items to include
+    Dale Sr, Salad Master Knife set w/wooden holder, variety of books (western,
+    Louis Lamour, cookbooks), Christmas decorations, salt & pepper sets, China
+    dolls, </td></tr>
+
+    <tr><td class=location lat='38.93221' lon='-95.24406'>2826 Belle Haven
+    Dr.</td><td>Kitchen glasses, kitchen chair, reel lawn mower, vinyl record rack,
+    records, books, laptop bag, kids toys, household items</td></tr>
+
+    <tr><td class=location lat='38.93247' lon='-95.25035'>1215 W. 29th
+    Ct.</td><td>Misc. household goods, couch set, children's
+    shoes</td></tr>
+
+
     </table>
 
 
 <script type="text/javascript"> 
 
-  var map = L.map('map').setView([38.937,-95.245], 15);
+  var map = L.map('map').setView([35,-95.2461], 16);
   var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
   var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
   var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 20, attribution: osmAttrib});
@@ -90,6 +118,8 @@ latlon= $(this).children().first()
   }
 
   });
+
+  map.setView([38.9349,-95.2461], 16);
                         
     </script>
 
