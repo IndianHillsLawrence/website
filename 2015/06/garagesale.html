@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen"/>
+  <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+  <link rel="stylesheet" href="stylesheets/leaflet.css" />
+
+<style>
+  #map { height: 430px; }
+</style>
+
+  <script type="text/javascript" src="javascripts/jquery.min-1.71.js"></script>
+  <script type="text/javascript" src="javascripts/script.js"></script>
+
+
+<!-- <script -->
+<!--         src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"> -->
+<!--     </script> -->
+
+ <script type="text/javascript" src="javascripts/leaflet.js"></script> 
+  <!-- <script type="text/javascript" src="javascripts/leaflet-src.js"></script> -->
+  <script type="text/javascript">
+    L.Icon.Default.imagePath='images/leaflet/';
+  </script>
+
+  <title>Neighborhood Garage Sale Friday June 19th - Sat June 20th</title>
+  <meta name="description" content="Indian Hills Neighborhood Garage Sale,
+                                    Friday June 19th-Sat June 20th">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <center><img alt="Indian Hills  Neighborhood Association, Lawrence Kansas" width="400px" src="images/indianhills.png"/>
+      </CENTER>
+    </header>
+
+    <h1>Yearly Neighborhood Garage Sale</h1>
+    <h3>Sat. June 20th</h3>
+
+    <div id="main" role="main">
+
+      <div id="map"></div>
+
+      <p>We are hosting a Neighborhood Garage Sale on Friday June 19th and
+      Saturday June 20th in Indian Hills. 
+
+    <table style="padding:12px; table-border=1px width:100%" border=1
+           id='locations'>
+    <tr style="background-color: gray; v-align:center
+    font-size:large"><th style="padding:2px; width:40%" >Address</th><th style="padding:2px">Items</th></tr>
+
+    <tr><td class=location lat='38.93745' lon='-95.24572'>2527 Belle Crest
+    Dr.</td><td>Infant Clothes. Baby Cradle. Baby
+    Toys. Dishes. Clothing.  Books. </td></tr>
+
+    </table>
+
+
+<script type="text/javascript"> 
+
+  var map = L.map('map').setView([35,-95.2461], 16);
+  var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+  var osm = new L.TileLayer(osmUrl, {minZoom: 8, maxZoom: 20, attribution: osmAttrib});
+  map.addLayer(osm);
+
+  $('table tr').each(function() {
+
+latlon= $(this).children().first()
+
+
+  if (latlon.attr('class') == 'location') {
+//  alert(latlon.html())  
+  addr = latlon.html()
+  var lat = latlon.attr('lat') 
+  var lon = latlon.attr('lon') 
+  var items = $(this).children().last().html() 
+  marker =  L.marker([lat, lon ]).addTo(map);
+  marker.bindPopup("<b>"+addr+"</b><p>"+items+"</p>").openPopup();
+  }
+
+  });
+
+  map.setView([38.9349,-95.2461], 16);
+                        
+    </script>
+
+      <p>Join the <a href=https://www.facebook.com/events/679269285536115/>Facebook Event</a></p>    
+<p>Find the <a href=http://lawrence.craigslist.org/gms/5040118064.html>Craigslist Advertising Here</a></p>
+
+    </div>
+
+
+
+    <div id="container">
+      <p class="tagline">Sign up here to be included as a seller on the website listing</p>
+      
+      <div id="main" role="main"> --
+<iframe src="https://docs.google.com/forms/d/1IUPqalVKlUquZu2U3epFTXrBbMhOWnD0OqrntQXpnsQ/viewform?embedded=true" --
+        width="600" height="500" frameborder="0" marginheight="0" --
+        marginwidth="0">Loading...</iframe> --
+      </div> --
+
+      <p class="tagline">join the Mailing List (ListServ) for general updates: <a href="https://groups.google.com/forum/#!forum/indian-hills-neighborhood-association">https://groups.google.com/forum/#!forum/indian-hills-neighborhood-association</a>
+
+</div>
+
+
+</body>
+</html>
