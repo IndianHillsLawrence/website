@@ -84,7 +84,7 @@ latlon= $(this).children().first()
   addr = latlon.html()
   var lat = latlon.attr('lat') 
   var lon = latlon.attr('lon') 
-  var items = $(this).children().last().html() 
+  var items = $(this).html() 
   marker =  L.marker([lat, lon ]).addTo(map);
   marker.bindPopup("<b>"+addr+"</b><p>"+items+"</p>").openPopup();
   }
